@@ -1,0 +1,23 @@
+# Compilados Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Pastas de build
+/target/
+/bin/
+/out/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+*.eclipse
+.classpath
+.project
+.settings/
+
+# Sistema
+.DS_Store
+Thumbs.db
