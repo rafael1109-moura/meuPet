@@ -19,6 +19,10 @@ public void setAreia_suja(boolean areia_suja) {
 public void limparAreia() {
     this.areia_suja = false;
 }
+@Override
+void exibirAnimal(){
+    System.out.println("Nome do seu gatinho é: " + this.nome + "\n De idade: " + this.idade);
+}
 
 }
 
