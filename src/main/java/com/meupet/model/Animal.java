@@ -89,6 +89,11 @@ public class Animal {
     float calcularRacao(float porcentagem_alimentacao) {
         return this.peso * porcentagem_alimentacao;
     }
-
+    void exibirAnimal(){
+        System.out.println("Nome do seu pet: " + this.nome + "\n De idade: " + this.idade);
+    }
+    void SugestoesBrincadeiras(){
+        System.out.println("");
+    }
 
 }
