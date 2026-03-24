@@ -34,5 +34,29 @@ public void setData_last_tosa(String data_last_tosa) {
 public void setData_ultimo_passeio(String data_ultimo_passeio) {
     this.data_ultimo_passeio = data_ultimo_passeio;
 }
+@Override
+void exibirAnimal(){
+    System.out.println("Nome do seu cachorrinho é: " + this.nome + "\n De idade: " + this.idade);
+}
+@Override
+void SugestoesBrincadeiras(){
+    Random rnd = new Random();
+
+    int value = rnd.nextInt(2);
+    switch (value) {
+        case 0:
+            System.out.println("Jogar bolinha");
+            break;
+        case 1:
+            System.out.println("Jogar frisbee");
+            break;
+        case 2:
+            System.out.println("Esconde, Esconde");
+            break;
+        default:
+            break;
+    }
+    System.out.println("");
+}
 
 }
