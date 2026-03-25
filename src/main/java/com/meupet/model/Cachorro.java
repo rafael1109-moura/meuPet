@@ -1,62 +1,64 @@
-package com.meupet.model;
+package main.java.com.meupet.model;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class Cachorro extends Animal {
     private String data_last_banho;
     private String data_last_tosa;
     private String data_ultimo_passeio;
 
-//construtor
-public Cachorro(int id, String nome, int idade, Sexo sexo, float peso, String raca, boolean sujo, boolean castrado,
+    public Cachorro(int id, String nome, int idade, Sexo sexo, float peso, String raca, boolean sujo, boolean castrado,
                     String data_last_banho, String data_last_tosa, String data_ultimo_passeio) {
-    super(id, nome, idade, sexo, peso, raca, sujo, castrado);
-    this.data_last_banho = data_last_banho;
-    this.data_last_tosa = data_last_tosa;
-    this.data_ultimo_passeio = data_ultimo_passeio;
-}
-//getters
-public String getData_last_banho() {
-    return data_last_banho;
-} 
-public String getData_last_tosa() {
-    return data_last_tosa;
-} 
-public String getData_ultimo_passeio() {
-    return data_ultimo_passeio;
-} 
-
-//setters
-public void setData_last_banho(String data_last_banho) {
-    this.data_last_banho = data_last_banho;
-}
-public void setData_last_tosa(String data_last_tosa) {
-    this.data_last_tosa = data_last_tosa;
-}   
-public void setData_ultimo_passeio(String data_ultimo_passeio) {
-    this.data_ultimo_passeio = data_ultimo_passeio;
-}
-@Override
-void exibirAnimal(){
-    System.out.println("Nome do seu cachorrinho é: " + this.nome + "\n De idade: " + this.idade);
-}
-@Override
-void SugestoesBrincadeiras(){
-    Random rnd = new Random();
-
-    int value = rnd.nextInt(2);
-    switch (value) {
-        case 0:
-            System.out.println("Jogar bolinha");
-            break;
-        case 1:
-            System.out.println("Jogar frisbee");
-            break;
-        case 2:
-            System.out.println("Esconde, Esconde");
-            break;
-        default:
-            break;
+        super(id, nome, idade, sexo, peso, raca, sujo, castrado);
+        this.data_last_banho = data_last_banho;
+        this.data_last_tosa = data_last_tosa;
+        this.data_ultimo_passeio = data_ultimo_passeio;
     }
-    System.out.println("");
-}
 
+    @Override
+    public List<Vacina> buscarVacinas(Map<String, List<Vacina>> vacinasPorPet) {
+        return vacinasPorPet.get("Cachorro");
+    }
+
+    @Override
+    public List<Vacina> buscarDoencas(Map<String, List<Vacina>> vacinasPorPet) {
+        return vacinasPorPet.get("Cachorro");
+    }
+
+    @Override
+    String exibirAnimal() {
+        return "Nome do seu cachorrinho é: " + nome + "\n De idade: " + idade;
+    }
+
+    @Override
+    void SugestoesBrincadeiras() {
+        Random rnd = new Random();
+        int value = rnd.nextInt(3);
+        switch (value) {
+            case 0 -> System.out.println("Jogar bolinha");
+            case 1 -> System.out.println("Jogar frisbee");
+            case 2 -> System.out.println("Esconde, Esconde");
+        }
+    }
+
+	public String getData_last_banho() { return data_last_banho; }
+
+	public void setData_last_banho(String data_last_banho) {
+		this.data_last_banho = data_last_banho;
+	}
+
+	public String getData_last_tosa() { return data_last_tosa; }
+
+	public void setData_last_tosa(String data_last_tosa) {
+		this.data_last_tosa = data_last_tosa;
+	}
+
+	public String getData_ultimo_passeio() { return data_ultimo_passeio; }
+
+	public void setData_ultimo_passeio(String data_ultimo_passeio) {
+		this.data_ultimo_passeio = data_ultimo_passeio;
+	}
+    
 }

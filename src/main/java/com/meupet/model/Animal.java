@@ -1,20 +1,25 @@
-package com.meupet.model;
+package main.java.com.meupet.model;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Animal {
-    private int id;
-    private String nome;
-    private int idade;
-    private Sexo sexo;
-    private float peso;
-    private String raca;
-    private boolean sujo;
-    private boolean castrado;
-    private ArrayList<String> doencas;
+    protected int id;
+    protected String nome;
+    protected int idade;
+    protected Sexo sexo;
+    protected float peso;
+    protected String raca;
+    protected boolean sujo;
+    protected boolean castrado;
+    protected ArrayList<Doenca> doencas;
+
     public enum Sexo {
         MACHO, FEMEA;
     }
-    //construtor
+
     public Animal(int id, String nome, int idade, Sexo sexo, float peso, String raca, boolean sujo, boolean castrado) {
         this.id = id;
         this.nome = nome;
@@ -26,74 +31,52 @@ public class Animal {
         this.castrado = castrado;
         this.doencas = new ArrayList<>();
     }
-    //getters
-    public int getId() {
-        return id;
+
+    public List<Vacina> buscarVacinas(Map<String, List<Vacina>> vacinasPorPet) {
+        return vacinasPorPet.values().stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
-    public String getNome() {
-        return nome;
+
+    public List<Vacina> buscarDoencas(Map<String, List<Vacina>> doencasPorPet) {
+        return doencasPorPet.values().stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
-    public int getIdade() {
-        return idade;
-    }
-    public Sexo getSexo() {
-        return sexo;
-    }
-    public float getPeso() {
-        return peso;
-    }
-    public String getRaca() {
-        return raca;
-    }
-    // is para bolleanos
-    public boolean isSujo() {
-        return sujo;
-    }
-    public boolean isCastrado() {
-        return castrado;
-    }
-    public ArrayList<String> getDoencas() {
-        return doencas;
-    }
-    public void adicionarDoenca(String doenca) {
+    
+
+    public int getId() { return id; }
+    public String getNome() { return nome; }
+    public int getIdade() { return idade; }
+    public Sexo getSexo() { return sexo; }
+    public float getPeso() { return peso; }
+    public String getRaca() { return raca; }
+    public boolean isSujo() { return sujo; }
+    public boolean isCastrado() { return castrado; }
+    public ArrayList<Doenca> getDoencas() { return doencas; }
+
+    public void adicionarDoenca(Doenca doenca) {
         this.doencas.add(doenca);
     }
 
-    //setters
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
-    }
-    public void setPeso(float peso) {
-        this.peso = peso;
-    }
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
-   
-    //metodos
-    public void limpar() {
-        this.sujo = false;
-    }
-    public void castrar() {
-        this.castrado = true;
-    }
+    public void setId(int id) { this.id = id; }
+    public void setNome(String nome) { this.nome = nome; }
+    public void setIdade(int idade) { this.idade = idade; }
+    public void setSexo(Sexo sexo) { this.sexo = sexo; }
+    public void setPeso(float peso) { this.peso = peso; }
+    public void setRaca(String raca) { this.raca = raca; }
+    public void limpar() { this.sujo = false; }
+    public void castrar() { this.castrado = true; }
+
     float calcularRacao(float porcentagem_alimentacao) {
         return this.peso * porcentagem_alimentacao;
     }
-    void exibirAnimal(){
-        System.out.println("Nome do seu pet: " + this.nome + "\n De idade: " + this.idade);
-    }
-    void SugestoesBrincadeiras(){
-        System.out.println("");
+
+    String exibirAnimal() {
+        return "Nome do seu pet: " + nome + "\n De idade: " + idade;
     }
 
+    void SugestoesBrincadeiras() {
+        System.out.println("");
+    }
 }
