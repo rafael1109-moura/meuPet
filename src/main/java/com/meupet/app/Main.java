@@ -7,6 +7,7 @@ import main.java.com.meupet.model.Cachorro;
 import main.java.com.meupet.model.Gato;
 import main.java.com.meupet.model.PetSaude;
 import main.java.com.meupet.model.Vacina;
+import main.java.com.meupet.model.Usuario;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,6 +30,9 @@ public class Main {
         // Criando um gato
         Gato gato = new Gato(2, "Mimi", 2, Animal.Sexo.FEMEA, 4.0f, "Siamês", false, true,
                      true);
+        // Criando um usuario
+        Usuario usuario = new Usuario(1, "Rafael", "rafael@example.com", "senha123");
+        usuario.login("rafael@example.com", "senha123");
         
         List<Vacina> vacinasGato = gato.buscarVacinas(saude.getMapaCompletoVacinas());
         

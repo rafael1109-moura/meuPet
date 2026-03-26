@@ -1,6 +1,6 @@
 package main.java.com.meupet.model;
 
-public class Usuario{
+public class Usuario implements Autenticavel {
     private int id;
     private String nome;
     private String email;
@@ -21,5 +21,14 @@ public class Usuario{
     public void setEmail(String email) { this.email = email; }
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    @Override
+    public void login(String email, String senha) {
+        if(this.email.equals(email) && this.senha.equals(senha)) {
+            System.out.println("Login bem-sucedido!, Bem-vindo, " + getNome());
+        } else {
+            System.out.println("Email ou senha incorretos.");
+        }
+    }
     
 }
