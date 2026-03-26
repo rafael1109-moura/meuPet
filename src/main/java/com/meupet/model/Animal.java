@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Animal {
+public abstract class Animal {
     protected int id;
     protected String nome;
     protected int idade;
@@ -76,7 +76,5 @@ public class Animal {
         return "Nome do seu pet: " + nome + "\n De idade: " + idade;
     }
 
-    public String sugestoesBrincadeiras() {
-        return "";
-    }
+    public abstract String sugestoesBrincadeiras();
 }

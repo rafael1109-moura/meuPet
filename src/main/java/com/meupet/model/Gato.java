@@ -30,7 +30,7 @@ public class Gato extends Animal {
             case 0 -> "Laser";
             case 1 -> "Varinha de pesca";
             case 2 -> "Caça ao Tesouro com Petiscos";
-            default -> "Construir um castelo";
+            default -> "Construir um castelo de caixa";
         };
     }
 
