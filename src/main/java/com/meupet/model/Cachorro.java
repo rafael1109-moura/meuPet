@@ -28,19 +28,19 @@ public class Cachorro extends Animal {
     }
 
     @Override
-    String exibirAnimal() {
+    public String exibirAnimal() {
         return "Nome do seu cachorrinho é: " + nome + "\n De idade: " + idade;
     }
 
     @Override
-    void SugestoesBrincadeiras() {
-        Random rnd = new Random();
-        int value = rnd.nextInt(3);
-        switch (value) {
-            case 0 -> System.out.println("Jogar bolinha");
-            case 1 -> System.out.println("Jogar frisbee");
-            case 2 -> System.out.println("Esconde, Esconde");
-        }
+    public String sugestoesBrincadeiras() {
+        return switch (new Random().nextInt(5)) {
+            case 0 -> "Jogar bolinha";
+            case 1 -> "Jogar frisbee";
+            case 2 -> "Esconde-esconde";
+            case 3 -> "Cabo de guerra";
+            default -> "Ensinar um comando novo";
+        };
     }
 
 	public String getData_last_banho() { return data_last_banho; }

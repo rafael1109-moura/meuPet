@@ -68,15 +68,15 @@ public class Animal {
     public void limpar() { this.sujo = false; }
     public void castrar() { this.castrado = true; }
 
-    float calcularRacao(float porcentagem_alimentacao) {
+    public float calcularRacao(float porcentagem_alimentacao) {
         return this.peso * porcentagem_alimentacao;
     }
 
-    String exibirAnimal() {
+    public String exibirAnimal() {
         return "Nome do seu pet: " + nome + "\n De idade: " + idade;
     }
 
-    void SugestoesBrincadeiras() {
-        System.out.println("");
+    public String sugestoesBrincadeiras() {
+        return "";
     }
 }

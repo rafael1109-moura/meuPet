@@ -52,7 +52,10 @@ public class Main {
 
         System.out.println("A areia está suja? " + gato.isAreia_suja());
 
-        
-        
+        System.out.println("Sugestão de brincadeira: " + cachorro.sugestoesBrincadeiras());
+        System.out.println("Sugestão de brincadeira: " + gato.sugestoesBrincadeiras());
+        System.out.println("Sugestão de brincadeira: " + cachorro.exibirAnimal());
+        System.out.println("Sugestão de brincadeira: " + gato.exibirAnimal());
+
     }
 }

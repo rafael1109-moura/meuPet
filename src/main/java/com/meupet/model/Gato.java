@@ -2,6 +2,7 @@ package main.java.com.meupet.model;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class Gato extends Animal {
     private boolean areia_suja;
@@ -24,7 +25,17 @@ public class Gato extends Animal {
     public void limparAreia() { this.areia_suja = false; }
 
     @Override
-    String exibirAnimal() {
+    public String sugestoesBrincadeiras() {
+        return switch (new Random().nextInt(4)) {
+            case 0 -> "Laser";
+            case 1 -> "Varinha de pesca";
+            case 2 -> "Caça ao Tesouro com Petiscos";
+            default -> "Construir um castelo";
+        };
+    }
+
+    @Override
+    public String exibirAnimal() {
         return "Nome do seu gatinho é: " + nome + "\n De idade: " + idade;
     }
 
