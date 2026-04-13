@@ -1,5 +1,3 @@
-
-
 import java.util.List;
 
 import main.java.com.meupet.model.Animal;
@@ -7,6 +5,9 @@ import main.java.com.meupet.model.Cachorro;
 import main.java.com.meupet.model.Gato;
 import main.java.com.meupet.model.PetSaude;
 import main.java.com.meupet.model.Vacina;
+import main.java.com.meupet.model.Cachorro.RacaCachorro;
+import main.java.com.meupet.model.Gato.RacaGato;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -14,8 +15,18 @@ public class Main {
     	
         System.out.println();
     	
-       Cachorro cachorro = new Cachorro(1, "Rex", 3, Animal.Sexo.MACHO, 10.5f, "Labrador", false, false,
-                                 "2024-06-01", "2024-06-02", "2024-06-03");
+       Cachorro cachorro = new Cachorro(1,
+         "Rex",
+            3,
+            Animal.Sexo.MACHO,
+            10.5f,
+            false,
+            false,
+            "2024-06-01",
+            "2024-06-02", 
+            "2024-06-03",
+            RacaCachorro.Golden_Retriever 
+            );
        
        List<Vacina> vacinasCachorro = cachorro.buscarVacinas(saude.getMapaCompletoVacinas());
        
@@ -27,8 +38,16 @@ public class Main {
        System.out.println();
        
         // Criando um gato
-        Gato gato = new Gato(2, "Mimi", 2, Animal.Sexo.FEMEA, 4.0f, "Siamês", false, true,
-                     true);
+        Gato gato = new Gato(2,
+         "Mimi",
+         2,
+         Animal.Sexo.FEMEA,
+         4.0f,
+         false,
+         true,
+         true,
+         RacaGato.Siames
+        );
         
         List<Vacina> vacinasGato = gato.buscarVacinas(saude.getMapaCompletoVacinas());
         
@@ -54,8 +73,8 @@ public class Main {
 
         System.out.println("Sugestão de brincadeira: " + cachorro.sugestoesBrincadeiras());
         System.out.println("Sugestão de brincadeira: " + gato.sugestoesBrincadeiras());
-        System.out.println("Sugestão de brincadeira: " + cachorro.exibirAnimal());
-        System.out.println("Sugestão de brincadeira: " + gato.exibirAnimal());
+        System.out.println(cachorro.exibirAnimal());
+        System.out.println(gato.exibirAnimal());
 
     }
 }

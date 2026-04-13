@@ -11,22 +11,21 @@ public abstract class Animal {
     protected int idade;
     protected Sexo sexo;
     protected float peso;
-    protected String raca;
     protected boolean sujo;
     protected boolean castrado;
     protected ArrayList<Doenca> doencas;
+    
 
     public enum Sexo {
         MACHO, FEMEA;
     }
 
-    public Animal(int id, String nome, int idade, Sexo sexo, float peso, String raca, boolean sujo, boolean castrado) {
+    public Animal(int id, String nome, int idade, Sexo sexo, float peso, boolean sujo, boolean castrado) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.sexo = sexo;
         this.peso = peso;
-        this.raca = raca;
         this.sujo = sujo;
         this.castrado = castrado;
         this.doencas = new ArrayList<>();
@@ -50,7 +49,6 @@ public abstract class Animal {
     public int getIdade() { return idade; }
     public Sexo getSexo() { return sexo; }
     public float getPeso() { return peso; }
-    public String getRaca() { return raca; }
     public boolean isSujo() { return sujo; }
     public boolean isCastrado() { return castrado; }
     public ArrayList<Doenca> getDoencas() { return doencas; }
@@ -64,7 +62,6 @@ public abstract class Animal {
     public void setIdade(int idade) { this.idade = idade; }
     public void setSexo(Sexo sexo) { this.sexo = sexo; }
     public void setPeso(float peso) { this.peso = peso; }
-    public void setRaca(String raca) { this.raca = raca; }
     public void limpar() { this.sujo = false; }
     public void castrar() { this.castrado = true; }
 

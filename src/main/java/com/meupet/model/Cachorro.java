@@ -8,13 +8,24 @@ public class Cachorro extends Animal {
     private String data_last_banho;
     private String data_last_tosa;
     private String data_ultimo_passeio;
+    private RacaCachorro raca;
 
-    public Cachorro(int id, String nome, int idade, Sexo sexo, float peso, String raca, boolean sujo, boolean castrado,
-                    String data_last_banho, String data_last_tosa, String data_ultimo_passeio) {
-        super(id, nome, idade, sexo, peso, raca, sujo, castrado);
+    public enum RacaCachorro {
+    Bulldog, Golden_Retriever, Pastor_Alemão, Pinscher, Pug, Salsicha, Shih_Tzu, SRD;
+}
+
+    //Lucas* add raças especificamente para gato e cachorro pq creio q seja algo mt especifico para uma classe
+    //tão abstrata como Animal
+    public void setRaca(RacaCachorro raca) {this.raca = raca;}
+    public RacaCachorro getRaca() { return raca; }
+
+    public Cachorro(int id, String nome, int idade, Sexo sexo, float peso, boolean sujo, boolean castrado,
+                    String data_last_banho, String data_last_tosa, String data_ultimo_passeio, RacaCachorro raca) {
+        super(id, nome, idade, sexo, peso, sujo, castrado);
         this.data_last_banho = data_last_banho;
         this.data_last_tosa = data_last_tosa;
         this.data_ultimo_passeio = data_ultimo_passeio;
+        this.raca = raca;
     }
 
     @Override
@@ -29,7 +40,8 @@ public class Cachorro extends Animal {
 
     @Override
     public String exibirAnimal() {
-        return "Nome do seu cachorrinho é: " + nome + "\n De idade: " + idade;
+        return "Nome do seu cachorrinho é: " + nome + "\n De idade: " + idade + "\n" +
+           "Raça: " + raca.toString();
     }
 
     @Override
