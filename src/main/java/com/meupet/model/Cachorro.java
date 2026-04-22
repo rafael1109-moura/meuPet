@@ -40,7 +40,7 @@ public class Cachorro extends Animal {
 
     @Override
     public String exibirAnimal() {
-        return "Nome do seu cachorrinho é: " + nome + "\n De idade: " + idade + "\n" +
+        return "Nome do seu cachorrinho é: " + nome + "\nDe idade: " + idade + "\n" +
            "Raça: " + raca.toString();
     }
 

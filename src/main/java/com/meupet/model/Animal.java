@@ -53,19 +53,36 @@ public abstract class Animal {
     public boolean isCastrado() { return castrado; }
     public ArrayList<Doenca> getDoencas() { return doencas; }
 
+    public void atualizarPerfil(String novoNome, int novaIdade) throws DadoInvalidoException {
+        this.setNome(novoNome);
+        setIdade(novaIdade);
+    }
+    
+    public void setIdade(int idade) throws DadoInvalidoException {
+        if (idade < 0) {
+            throw new DadoInvalidoException("Idade inválida: " + idade + ". A idade deve ser um valor positivo.");
+        }
+        this.idade = idade;
+    }
+    public void setPeso(float peso) throws DadoInvalidoException {
+    	if (peso < 0) {
+            throw new DadoInvalidoException("Peso inválido: " + peso + ". O peso deve ser um valor positivo.");
+        }
+    	this.peso = peso; 
+    }
+
+    
     public void adicionarDoenca(Doenca doenca) {
         this.doencas.add(doenca);
     }
 
     public void setId(int id) { this.id = id; }
     public void setNome(String nome) { this.nome = nome; }
-    public void setIdade(int idade) { this.idade = idade; }
     public void setSexo(Sexo sexo) { this.sexo = sexo; }
-    public void setPeso(float peso) { this.peso = peso; }
     public void limpar() { this.sujo = false; }
     public void castrar() { this.castrado = true; }
 
-    public float calcularRacao(float porcentagem_alimentacao) {
+    public float calcularRacao(float porcentagem_alimentacao) throws DadoInvalidoException {
         return this.peso * porcentagem_alimentacao;
     }
 

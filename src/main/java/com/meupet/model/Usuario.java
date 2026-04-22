@@ -23,11 +23,11 @@ public class Usuario implements Autenticavel {
     public void setSenha(String senha) { this.senha = senha; }
 
     @Override
-    public void login(String email, String senha) {
-        if(this.email.equals(email) && this.senha.equals(senha)) {
-            System.out.println("Login bem-sucedido!, Bem-vindo, " + getNome());
+    public void login(String email, String senha) throws AutenticacaoException {
+        if (this.email.equals(email) && this.senha.equals(senha)) {
+            System.out.println("Login bem-sucedido! Bem-vindo, " + getNome());
         } else {
-            System.out.println("Email ou senha incorretos.");
+            throw new AutenticacaoException("Falha no login: Email ou senha incorretos para o usuário " + this.email);
         }
     }
     

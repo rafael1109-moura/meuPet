@@ -1,11 +1,14 @@
 import java.util.List;
 
 import main.java.com.meupet.model.Animal;
+import main.java.com.meupet.model.AutenticacaoException;
 import main.java.com.meupet.model.Cachorro;
 import main.java.com.meupet.model.Gato;
 import main.java.com.meupet.model.PetSaude;
+import main.java.com.meupet.model.Usuario;
 import main.java.com.meupet.model.Vacina;
 import main.java.com.meupet.model.Cachorro.RacaCachorro;
+import main.java.com.meupet.model.DadoInvalidoException;
 import main.java.com.meupet.model.Gato.RacaGato;
 
 
@@ -37,7 +40,6 @@ public class Main {
        
        System.out.println();
        
-        // Criando um gato
         Gato gato = new Gato(2,
          "Mimi",
          2,
@@ -75,6 +77,37 @@ public class Main {
         System.out.println("Sugestão de brincadeira: " + gato.sugestoesBrincadeiras());
         System.out.println(cachorro.exibirAnimal());
         System.out.println(gato.exibirAnimal());
+        
+        System.out.println("\n\n\n");
+        
+        try {
+            cachorro.setIdade(-5); 
+        } catch (DadoInvalidoException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
 
+        try {
+            cachorro.atualizarPerfil("Rex Segundo", 5);
+            System.out.println("Perfil atualizado com sucesso!");
+        } catch (DadoInvalidoException e) {
+            System.out.println("Erro:  " + e.getMessage());
+        }
+
+        System.out.println(cachorro.exibirAnimal());
+
+        System.out.println("\n");
+        Usuario user = new Usuario(1, "Usuario", "user@email.com", "senha123");
+
+        try {
+            user.login("user@email.com", "12345");
+        } catch (AutenticacaoException e) {
+            System.out.println("Erro: "+ e.getMessage());
+        }
+
+        try {
+            user.login("user@email.com", "senha123");
+        } catch (AutenticacaoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
