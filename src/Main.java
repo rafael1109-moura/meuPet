@@ -1,4 +1,16 @@
 import java.util.List;
+import java.util.Scanner;
+/*
+Em vez do C++ inferir o tipo pela variável, no Java você chama o método correspondente:
+
+scanner.nextInt(): Lê um int.
+
+scanner.nextDouble(): Lê um double.
+
+scanner.nextLine(): Lê uma linha inteira como String (equivalente ao getline(cin, variavel) ou cin.getline()).
+
+scanner.next(): Lê apenas a próxima palavra como String (para de ler no primeiro espaço).
+*/
 
 import main.java.com.meupet.model.Animal;
 import main.java.com.meupet.model.AutenticacaoException;
@@ -14,12 +26,22 @@ import main.java.com.meupet.model.Gato.RacaGato;
 
 public class Main {
     public static void main(String[] args) {
-    	PetSaude saude = new PetSaude();
-    	
+        Scanner scanner = new Scanner(System.in);
+
+        PetSaude saude = new PetSaude();
+        
+        //pega nome do cachorro
+        System.out.print("Digite o nome do cachorro: ");
+        String nomeCachorro = scanner.nextLine();
+        
+        //nome do gato
+        System.out.print("Digite o nome do gato: ");
+        String nomeGato = scanner.nextLine();
+        
         System.out.println();
-    	
-       Cachorro cachorro = new Cachorro(1,
-         "Rex",
+        
+        Cachorro cachorro = new Cachorro(1,
+            nomeCachorro,
             3,
             Animal.Sexo.MACHO,
             10.5f,
@@ -29,33 +51,34 @@ public class Main {
             "2024-06-02", 
             "2024-06-03",
             RacaCachorro.Golden_Retriever 
-            );
-       
-       List<Vacina> vacinasCachorro = cachorro.buscarVacinas(saude.getMapaCompletoVacinas());
-       
-       System.out.println("Histórico de vacinas recomendadas para " + cachorro.getNome() + ":");
-       for(Vacina v : vacinasCachorro) {
-    	   System.out.println("- " + v.getNome() + " previne " + v.getDoenca().getNome());
-       }
-       
-       System.out.println();
-       
+        );
+        
+        List<Vacina> vacinasCachorro = cachorro.buscarVacinas(saude.getMapaCompletoVacinas());
+        
+        System.out.println("Histórico de vacinas recomendadas para " + cachorro.getNome() + ":");
+        
+        for(Vacina v : vacinasCachorro) {
+            System.out.println("- " + v.getNome() + ", previne " + v.getDoenca().getNome());
+        }
+        
+        System.out.println();
+        
         Gato gato = new Gato(2,
-         "Mimi",
-         2,
-         Animal.Sexo.FEMEA,
-         4.0f,
-         false,
-         true,
-         true,
-         RacaGato.Siames
+            nomeGato,
+            2,
+            Animal.Sexo.FEMEA,
+            4.0f,
+            false,
+            true,
+            true,
+            RacaGato.Siames
         );
         
         List<Vacina> vacinasGato = gato.buscarVacinas(saude.getMapaCompletoVacinas());
         
         System.out.println("Histórico de vacinas recomendadas para " + gato.getNome() + ":");
         for(Vacina v : vacinasGato) {
-     	   System.out.println("- " + v.getNome() + " previne " + v.getDoenca().getNome());
+            System.out.println("- " + v.getNome() + ", previne " + v.getDoenca().getNome());
         }
         
         System.out.println();
@@ -109,5 +132,6 @@ public class Main {
         } catch (AutenticacaoException e) {
             System.out.println(e.getMessage());
         }
+        scanner.close();
     }
 }
