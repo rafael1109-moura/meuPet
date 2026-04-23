@@ -14,8 +14,6 @@ public class Cachorro extends Animal {
     Bulldog, Golden_Retriever, Pastor_Alemão, Pinscher, Pug, Salsicha, Shih_Tzu, SRD;
 }
 
-    //Lucas* add raças especificamente para gato e cachorro pq creio q seja algo mt especifico para uma classe
-    //tão abstrata como Animal
     public void setRaca(RacaCachorro raca) {this.raca = raca;}
     public RacaCachorro getRaca() { return raca; }
 

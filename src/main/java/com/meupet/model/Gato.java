@@ -12,8 +12,6 @@
             Maine_Coon, Persa, Siames, SRD;
         }
 
-        //Lucas* add raças especificamente para gato e cachorro pq creio q seja algo mt especifico para uma classe
-        //tão abstrata como Animal
         public void setRaca(RacaGato raca){this.raca = raca;}
         public RacaGato getRaca(){return raca;}
 
