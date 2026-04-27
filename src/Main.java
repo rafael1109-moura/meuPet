@@ -1,27 +1,26 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-/*
-Em vez do C++ inferir o tipo pela variável, no Java você chama o método correspondente:
-
-scanner.nextInt(): Lê um int.
-
-scanner.nextDouble(): Lê um double.
-
-scanner.nextLine(): Lê uma linha inteira como String (equivalente ao getline(cin, variavel) ou cin.getline()).
-
-scanner.next(): Lê apenas a próxima palavra como String (para de ler no primeiro espaço).
-*/
-
 import main.java.com.meupet.model.Animal;
 import main.java.com.meupet.model.AutenticacaoException;
 import main.java.com.meupet.model.Cachorro;
-import main.java.com.meupet.model.Gato;
-import main.java.com.meupet.model.PetSaude;
-import main.java.com.meupet.model.Usuario;
-import main.java.com.meupet.model.Vacina;
 import main.java.com.meupet.model.Cachorro.RacaCachorro;
 import main.java.com.meupet.model.DadoInvalidoException;
+import main.java.com.meupet.model.Gato;
 import main.java.com.meupet.model.Gato.RacaGato;
+import main.java.com.meupet.model.PetSaude;
+import main.java.com.meupet.model.Usuario;
+
+// novas bibliotecas para JSON
+import main.java.com.meupet.model.Vacina;
+import com.google.gson.Gson;
+import java.io.FileWriter;
+//leitura e escrita do JSON
+import java.io.FileReader;
+import java.io.FileWriter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.File;
 
 
 public class Main {
@@ -29,6 +28,49 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         PetSaude saude = new PetSaude();
+
+        
+        //=========================================
+        //tentando armazenar o usuario
+        //=================================================
+        //criando usuarios
+        Usuario usuario1 = new Usuario(1, "João Silva", "joao.silva@email.com", "senha123");
+        Usuario usuario2 = new Usuario(2, "Maria Oliveira", "maria.oliveira@email.com", "senha123");
+        //armazenando usuarios em uma lista
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+        usuarios.add(usuario1);
+        usuarios.add(usuario2);
+        //convertendo lista de usuarios para JSON
+        String jsonUser = new Gson().toJson(usuarios);
+        System.out.println("JSON dos usuários: " + jsonUser);
+        // escrevendo JSON em um arquivo
+        try {
+            FileWriter writer = new FileWriter("usuarios.json");
+            writer.write(jsonUser);
+            writer.close();
+
+            System.out.println("Arquivo criado com sucesso!");
+        } catch (Exception e) {
+            System.out.println("Erro ao criar arquivo: " + e.getMessage());
+        }
+
+        //leitura do JSON
+        try {
+            FileReader reader = new FileReader("usuarios.json");
+            usuarios = gson.fromJson(reader, new TypeToken<List<Usuario>>(){}.getType());
+
+            reader.close();
+        } catch (Exception e) {
+            usuarios = new ArrayList<Usuario>();
+            System.out.println("Erro ao ler arquivo: " + e.getMessage());
+        }
+
+        //como apagar: usuarios.clear();
+        // como adicionar 
+        //Usuario novo = new Usuario(3, "Novo Usuario", "novo@email.com", "123");
+        //usuarios.add(novo);
+
+         //=========================================
         
         //pega nome do cachorro
         System.out.print("Digite o nome do cachorro: ");
