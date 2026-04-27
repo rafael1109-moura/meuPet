@@ -10,7 +10,6 @@ import main.java.com.meupet.model.Gato;
 import main.java.com.meupet.model.Gato.RacaGato;
 import main.java.com.meupet.model.PetSaude;
 import main.java.com.meupet.model.Usuario;
-
 // novas bibliotecas para JSON
 import main.java.com.meupet.model.Vacina;
 import com.google.gson.Gson;
@@ -29,49 +28,15 @@ public class Main {
 
         PetSaude saude = new PetSaude();
 
+        //==================================================================================
+        // Menu para gerenciamento de usuários
+        Menu menu = new Menu(); // cria o menu
+        menu.iniciar();         // executa o menu
         
-        //=========================================
-        //tentando armazenar o usuario
-        //=================================================
-        //criando usuarios
-        Usuario usuario1 = new Usuario(1, "João Silva", "joao.silva@email.com", "senha123");
-        Usuario usuario2 = new Usuario(2, "Maria Oliveira", "maria.oliveira@email.com", "senha123");
-        //armazenando usuarios em uma lista
-        List<Usuario> usuarios = new ArrayList<Usuario>();
-        usuarios.add(usuario1);
-        usuarios.add(usuario2);
-        //convertendo lista de usuarios para JSON
-        String jsonUser = new Gson().toJson(usuarios);
-        System.out.println("JSON dos usuários: " + jsonUser);
-        // escrevendo JSON em um arquivo
-        try {
-            FileWriter writer = new FileWriter("usuarios.json");
-            writer.write(jsonUser);
-            writer.close();
 
-            System.out.println("Arquivo criado com sucesso!");
-        } catch (Exception e) {
-            System.out.println("Erro ao criar arquivo: " + e.getMessage());
-        }
+        //=================================================""=================================
 
-        //leitura do JSON
-        try {
-            FileReader reader = new FileReader("usuarios.json");
-            usuarios = gson.fromJson(reader, new TypeToken<List<Usuario>>(){}.getType());
 
-            reader.close();
-        } catch (Exception e) {
-            usuarios = new ArrayList<Usuario>();
-            System.out.println("Erro ao ler arquivo: " + e.getMessage());
-        }
-
-        //como apagar: usuarios.clear();
-        // como adicionar 
-        //Usuario novo = new Usuario(3, "Novo Usuario", "novo@email.com", "123");
-        //usuarios.add(novo);
-
-         //=========================================
-        
         //pega nome do cachorro
         System.out.print("Digite o nome do cachorro: ");
         String nomeCachorro = scanner.nextLine();
