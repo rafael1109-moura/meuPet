@@ -30,5 +30,13 @@ public class Usuario implements Autenticavel {
             throw new AutenticacaoException("Falha no login: Email ou senha incorretos para o usuário " + this.email);
         }
     }
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "ID:" + id +
+                ", Nome:'" + nome + '\'' +
+                ", Email:'" + email + '\'' +
+                '}';
+    }
     
 }
