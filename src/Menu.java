@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import java.io.FileWriter;
 
 
+
 public class Menu {
     // classe para ler dados, system é teclado
     private Scanner scanner = new Scanner(System.in);
@@ -44,9 +45,7 @@ public class Menu {
         if (usuarios.isEmpty()){
             System.out.println("Nenhum usuário cadastrado.");
         } else {
-            for (Usuario usuario : usuarios){
-                System.out.println(usuario);
-            }
+            usuarios.forEach(usuario -> System.out.println(usuario));
         }
     }
 
