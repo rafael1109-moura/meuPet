@@ -1,27 +1,25 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-/*
-Em vez do C++ inferir o tipo pela variável, no Java você chama o método correspondente:
-
-scanner.nextInt(): Lê um int.
-
-scanner.nextDouble(): Lê um double.
-
-scanner.nextLine(): Lê uma linha inteira como String (equivalente ao getline(cin, variavel) ou cin.getline()).
-
-scanner.next(): Lê apenas a próxima palavra como String (para de ler no primeiro espaço).
-*/
-
 import main.java.com.meupet.model.Animal;
 import main.java.com.meupet.model.AutenticacaoException;
 import main.java.com.meupet.model.Cachorro;
-import main.java.com.meupet.model.Gato;
-import main.java.com.meupet.model.PetSaude;
-import main.java.com.meupet.model.Usuario;
-import main.java.com.meupet.model.Vacina;
 import main.java.com.meupet.model.Cachorro.RacaCachorro;
 import main.java.com.meupet.model.DadoInvalidoException;
+import main.java.com.meupet.model.Gato;
 import main.java.com.meupet.model.Gato.RacaGato;
+import main.java.com.meupet.model.PetSaude;
+import main.java.com.meupet.model.Usuario;
+// novas bibliotecas para JSON
+import main.java.com.meupet.model.Vacina;
+import com.google.gson.Gson;
+import java.io.FileWriter;
+//leitura e escrita do JSON
+import java.io.FileReader;
+import java.io.FileWriter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.File;
 
 
 public class Main {
@@ -29,7 +27,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         PetSaude saude = new PetSaude();
+
+        //==================================================================================
+        // Menu para gerenciamento de usuários
+        Menu menu = new Menu(); // cria o menu
+        menu.iniciar();         // executa o menu
         
+
+        //=================================================""=================================
+
+
         //pega nome do cachorro
         System.out.print("Digite o nome do cachorro: ");
         String nomeCachorro = scanner.nextLine();

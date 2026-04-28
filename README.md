@@ -20,3 +20,9 @@ Equipe:
 
 Professor orientador:
 * Alan de Oliveira Santana
+
+observações de como rodar atualmente 
+
+cd C:\Users\quali\meuPet\src
+javac -cp ".;..\lib\gson-2.14.0.jar" Main.java
+java -cp ".;..\lib\gson-2.14.0.jar" Main
